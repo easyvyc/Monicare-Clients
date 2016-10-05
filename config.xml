@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.monicareinc.MonicareClients" version="1.0.4">
+    <name>MoniCare Client</name>
+    <description>
+        Full-service household staffing agency in Chicago.
+    </description>
+    <author email="info@monicare.com" href="https://www.monicare.com">
+        Monicare Inc.
+</author>
+
+    <preference name="orientation" value="portrait"/>
+    <preference name="Fullscreen" value="true"/>
+    <preference name="EnableViewportScale" value="false"/>
+    <preference name="disallowOverscroll" value="true"/>
+    <preference name="webviewbounce" value="false"/>
+    <preference name="iosExtraFilesystems" value="library,library-nosync,documents,documents-nosync,cache,bundle,root"/>
+    <preference name="AndroidExtraFilesystems" value="files,files-external,documents,sdcard,cache,cache-external,root"/>
+    <preference name="AndroidPersistentFileLocation" value="Compatibility"/>
+    <preference name="permissions" value="none"/>
+    <preference name="target-device" value="universal"/>
+    <preference name="prerendered-icon" value="true"/>
+    <preference name="stay-in-webview" value="false"/>
+    <preference name="ios-statusbarstyle" value="black-opaque"/>
+    <preference name="detect-data-types" value="true"/>
+    <preference name="exit-on-suspend" value="false"/>
+    <preference name="show-splash-screen-spinner" value="true"/>
+    <preference name="auto-hide-splash-screen" value="true"/>
+    <preference name="disable-cursor" value="false"/>
+    <preference name="android-installLocation" value="auto"/>
+
+    <icon src="www/img/logo_btn.png"/>
+    
+    <access origin="*"/>
+    <plugin name="cordova-plugin-whitelist" version="1"/>
+    <allow-navigation href="*"/>
+    <content src="index.html"/>
+    <access launch-external="yes" origin="mailto:*"/>
+    <access launch-external="yes" origin="tel:*"/>
+    <access launch-external="yes" origin="sms:*"/>
+    <access launch-external="yes" origin="geo:*"/>
+    <allow-intent href="http://*/*"/>
+    <allow-intent href="https://*/*"/>
+    <allow-intent href="tel:*"/>
+    <allow-intent href="sms:*"/>
+    <allow-intent href="mailto:*"/>
+    <allow-intent href="geo:*"/>
+    <platform name="android">
+        <allow-intent href="market:*"/>
+        <access launch-external="yes" origin="market:*"/>
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*"/>
+        <allow-intent href="itms-apps:*"/>
+    </platform>
+</widget>

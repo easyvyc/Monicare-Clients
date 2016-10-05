@@ -1,0 +1,827 @@
+html {
+    height:100%;
+}
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#FFFFFF;
+    background-attachment:fixed;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:13px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    width:100%;
+}
+a {
+    color: #a7396a;
+}
+
+
+/* Portrait layout (default) */
+.app {
+    position:relative;
+    text-align:center;
+    padding-top:75px;
+    padding-bottom:10px;
+    z-index:1;
+    display:none;
+}
+.user-logged .app {
+    padding-bottom:50px;
+}
+
+#loading {
+    position:fixed;
+    text-align:center;
+    padding:20% 0;
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,0.7);
+    z-index:100;
+}
+
+#page_header {
+    top:0px !important;
+    left:0px !important;
+    position:fixed;
+    width:100%;
+    height:60px;
+    background:#FFF;
+    box-shadow:0 0 10px #000;
+    z-index:2;
+}
+#page_header .logo {
+    position:absolute;
+    top:5px;
+    width:100%;
+    text-align:center;
+}
+#top_navigation {
+    position:relative;
+    top:0px;
+    padding-top:10px;
+    left:10px;
+    z-index:100;
+}
+#top_navigation ul {
+    text-align:left;
+    position:absolute;
+    display:none;
+    padding:0px;
+    margin:0px;
+    top:100%;
+    list-style:none;
+    background:#EFECEF;
+    box-shadow:0 10px 10px #333;
+}
+#top_navigation ul a {
+    white-space:nowrap;
+    border-bottom: 1px solid #e7e3e8;
+    color: #642d6e;
+    display: block;
+    font-family: Georgia;
+    font-size: 20px;
+    padding: 15px;
+    text-decoration: none;
+    text-shadow:1.5px 1.5px 0 #FFF;
+    text-transform:uppercase;
+}
+#top_navigation ul a i {
+    display:inline-block;
+    width:50px;
+    text-align:center;
+}
+#top_navigation ul a span {
+    display:inline-block;
+    font-weight:bold;
+    vertical-align:top;
+    margin-top:10px;
+}
+#login_navigation {
+    position:absolute;
+    right:10px;
+    top:10px;
+    z-index:101;
+}
+
+#footer_navigation {
+    background: #5e486b none repeat scroll 0 0;
+    bottom: 0;
+    box-shadow: 0 0 7px #b6a7b9;
+    height: 40px;
+    left: 0;
+    line-height: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    display:none;
+}
+.user-logged #footer_navigation {
+    display:block;
+}
+#footer_navigation ul {
+    display: table;
+    height: 40px;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#footer_navigation li {
+    color: #aaa;
+    display: table-cell;
+    font-size: 16px;
+    height: 30px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+#footer_navigation li a {
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    padding: 0 10px;
+    text-decoration: none;
+}
+#footer_navigation li.active {
+    background-image: radial-gradient(ellipse closest-side at center center , #ba8ed4 0%, #5e486b 100%);
+}
+body.oncall #footer_navigation .client_questionnaire {
+    display:none;
+}
+
+
+/* iphone reik nuleist viska per 20px del laikrodzio */
+body.iphone .app {
+    padding-top:95px;
+}
+body.iphone #page_header {
+    height:80px;
+}
+body.iphone #page_header .logo {
+    top:25px;
+}
+body.iphone #top_navigation {
+    top:20px;
+}
+body.iphone #login_navigation {
+    top:30px;
+}
+/* end iphone */
+
+
+h1 {
+    color: #642d6e;
+    font-family: Georgia;
+    font-weight: bold;    
+    font-size:16px;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+.big_btn {
+    background-image: linear-gradient(bottom, rgb(62,44,86) 0%, rgb(130,105,130) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(62,44,86) 0%, rgb(130,105,130) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(62,44,86) 0%, rgb(130,105,130) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(62,44,86) 0%, rgb(130,105,130) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(62,44,86) 0%, rgb(130,105,130) 100%);
+
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0, rgb(62,44,86)),
+            color-stop(1, rgb(130,105,130))
+    );
+    border: medium none;
+    border-radius: 5px;
+    box-shadow: 0 5px 8px #b3b3b3;
+    margin-bottom:8px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+    height: auto;
+    padding: 10px 15px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #2f2439;
+    border-radius:5px;
+}
+.notice-msg {
+    background-color: #def2de;
+    border:1px solid #d3eed7;
+    color: #4ab948;
+    border-radius: 5px;
+    padding: 5px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);    
+}
+input.err, textarea.err, select.err {
+    background-color: #f2dede;
+}
+.error-msg {
+    background-color: #f2dede;
+    border:1px solid #eed3d7;
+    color: #b94a48;
+    border-radius: 5px;
+    padding: 5px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);    
+}
+.error {
+    color:#ee3333;
+}
+.tipsy {
+    font-size:11px !important;
+}
+
+.m_btn {
+    background-image: linear-gradient(bottom, rgb(239,236,239) 0%, rgb(249,249,249) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(239,236,239) 0%, rgb(249,249,249) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(239,236,239) 0%, rgb(249,249,249) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(239,236,239) 0%, rgb(249,249,249) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(239,236,239) 0%, rgb(249,249,249) 100%);
+
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0, rgb(239,236,239)),
+            color-stop(1, rgb(249,249,249))
+    );
+    border-radius: 5px;
+    box-shadow: 0 2px 3px #ddcee0;
+    color:#642d6e;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    outline: medium none;
+    text-align: left;
+    text-decoration: none !important;
+    text-shadow: 1px 1px 0 #ffffff;
+    padding:5px 10px;
+}
+.m_btn.logged {
+    background-image: linear-gradient(bottom, rgb(62,44,86) 0%, rgb(130,105,130) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(62,44,86) 0%, rgb(130,105,130) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(62,44,86) 0%, rgb(130,105,130) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(62,44,86) 0%, rgb(130,105,130) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(62,44,86) 0%, rgb(130,105,130) 100%);
+
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0, rgb(62,44,86)),
+            color-stop(1, rgb(130,105,130))
+    );
+    color:#FFF;
+    text-shadow:1px 1px 0 #3e284b;
+}
+
+.mnc_btn {
+    background-image: linear-gradient(bottom, rgb(62,44,86) 0%, rgb(130,105,130) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(62,44,86) 0%, rgb(130,105,130) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(62,44,86) 0%, rgb(130,105,130) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(62,44,86) 0%, rgb(130,105,130) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(62,44,86) 0%, rgb(130,105,130) 100%);
+
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0, rgb(62,44,86)),
+            color-stop(1, rgb(130,105,130))
+    );
+    color:#FFF;
+    text-shadow:1px 1px 0 #3e284b;
+}
+.grey_btn {
+    background:#666;
+    background: -webkit-linear-gradient(#666, #555); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#666, #555); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#666, #555); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#666, #555); /* Standard syntax */        
+    color:#FFF;
+}
+.green_btn {
+    background:#22B14C;
+    background: -webkit-linear-gradient(#22B14C, #1E903F); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#22B14C, #1E903F); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#22B14C, #1E903F); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#22B14C, #1E903F); /* Standard syntax */       
+    color:#FFF;
+}
+.red_btn {
+    background:#DD1D42;
+    background: -webkit-linear-gradient(#DD1D42, #A3112D); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#DD1D42, #A3112D); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#DD1D42, #A3112D); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#DD1D42, #A3112D); /* Standard syntax */       
+    color:#FFF;
+}
+
+.table {
+    display:table;
+}
+.info-row {
+    display:table-row;
+}
+.info-row .cell {
+    display:table-cell;
+    padding:5px;
+}
+
+
+.first-cap:first-letter {
+    text-transform:uppercase;
+}
+
+.big_link {
+	display:block;
+	font-family:Georgia !important;
+	font-size:20px;
+	text-decoration:none !important;
+	border-radius:5px;
+	box-shadow:0 2px 5px #e6d9e8;
+	margin:10px 0;
+	position:relative;
+	height:60px;
+	outline:none;
+	overflow:hidden;
+}
+.big_link .link {
+	display:block;
+	padding-left:80px;
+	padding-top:15px;
+}
+.big_link .img {
+	display:block;
+	border-right:4px solid #642d6e;
+	width:60px;
+	height:100%;
+	position:absolute;
+	background-size:100%;
+	background-repeat:no-repeat;
+	background-position:center center;
+        border-top-left-radius:5px;
+        border-bottom-left-radius:5px;
+}
+.big_link em {
+	display:block;
+	width:20px;
+	height:100%;
+	position:absolute;
+	right:0px;
+	top:15px;
+	font-style:normal;
+}
+.big_link:hover {
+	color:#a43965;
+	background-image: linear-gradient(bottom, rgb(245,233,237) 0%, rgb(255,255,255) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(245,233,237) 0%, rgb(255,255,255) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(245,233,237) 0%, rgb(255,255,255) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(245,233,237) 0%, rgb(255,255,255) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(245,233,237) 0%, rgb(255,255,255) 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(245,233,237)),
+		color-stop(1, rgb(255,255,255))
+	);	
+}
+.big_link:hover .img {
+	border-right:4px solid #a43965;
+}
+.big_link:active {
+	color:#a43965;
+	background-image: linear-gradient(bottom, rgb(255,255,255) 0%, rgb(245,233,237) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(245,233,237) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(245,233,237) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(245,233,237) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(245,233,237) 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(255,255,255)),
+		color-stop(1, rgb(245,233,237))
+	);	
+}
+
+
+span.checkbox {
+	position:relative;
+	display:inline-block;
+	width:25px;
+	height:25px;
+	vertical-align:middle;
+}
+span.checkbox span {
+	position: absolute;
+	right: 0;
+	width: 23px;
+	height: 23px;
+	line-height: 15px;
+	padding: 2px;
+	color: #FFF;
+	text-align: center;
+	background: url('../img/forms/checkbox.png') center center no-repeat;
+	background-size: contain;
+	z-index:1;
+}
+span.checkbox span:after {
+	content: ""; /*if CSS are disbled span elements are not displayed*/
+}
+span.checkbox input {
+	position: absolute;
+	right: 0;
+	margin: 0;
+	width: 25px;
+	height: 25px;
+	/*hide the radio button*/
+	filter:alpha(opacity=0);
+	-moz-opacity:0;
+	-khtml-opacity: 0;
+	opacity: 0;
+    cursor: pointer;
+	z-index:2;
+}
+span.checkbox input[type="checkbox"] + span {
+	visibility: visible;
+}
+span.checkbox input[type="checkbox"] + span:after {
+	content: ""; /*if CSS are disbled span elements are not displayed*/
+}
+span.checkbox input[type="checkbox"]:checked + span {
+	visibility: visible; /*show the "YES" label only if the radio button is checked*/
+	background: url('../img/forms/checkbox_checked.png') center center no-repeat;
+	background-size: contain;
+}
+span.checkbox input[type="checkbox"].err + span {
+    background: url('../img/forms/checkbox_err.png') center center no-repeat;
+    background-size: contain;
+}
+span.checkbox input[type="checkbox"]:disabled {
+	cursor:default;
+}
+span.checkbox input[type="checkbox"]:disabled + span {
+	opacity:0.7;
+	/*background: url('/images/checkbox_disabled.png') center center no-repeat;*/
+}
+span.checkbox input[type="checkbox"]:checked:disabled + span {
+	opacity:0.7;
+	/*background: url('/images/checkbox_checked_disabled.png') center center no-repeat;*/
+}
+span.radio {
+	position:relative;
+	display:inline-block;
+	width:25px;
+	height:25px;
+	vertical-align:middle;
+}
+span.radio span {
+	position: absolute;
+	right: 0;
+	width: 23px;
+	height: 23px;
+	line-height: 15px;
+	padding: 2px;
+	color: #FFF;
+	text-align: center;
+	background: url('../img/forms/radio.png') center center no-repeat;
+	background-size: contain;
+	z-index:1;
+}
+span.radio span:after {
+	content: ""; /*if CSS are disbled span elements are not displayed*/
+}
+span.radio input {
+	position: absolute;
+	right: 0;
+	margin: 0;
+	width: 25px;
+	height: 25px;
+	/*hide the radio button*/
+	filter:alpha(opacity=0);
+	-moz-opacity:0;
+	-khtml-opacity: 0;
+	opacity: 0;
+    cursor: pointer;
+	z-index:2;
+}
+span.radio input[type="radio"] + span {
+	visibility: visible;
+}
+span.radio input[type="radio"] + span:after {
+	content: ""; /*if CSS are disbled span elements are not displayed*/
+}
+span.radio input[type="radio"]:checked + span {
+	visibility: visible; /*show the "YES" label only if the radio button is checked*/
+	background: url('../img/forms/radio_checked.png') center center no-repeat;
+	background-size: contain;
+}
+span.radio input[type="radio"].err + span {
+    background: url('../img/forms/radio_err.png') center center no-repeat;
+    background-size: contain;
+}
+span.radio input[type="radio"]:disabled {
+	cursor:default !important;
+}	
+span.radio input[type="radio"]:disabled + span {
+	opacity:0.7;
+}
+span.radio input[type="radio"]:checked:disabled + span {
+	opacity:0.7;
+}
+
+select {
+    font-size: 100%;
+    padding: 7px;	
+    padding-right:27px;
+    -webkit-appearance: none;
+    border: 2px inset;
+    background-image:url('../img/forms/select.png');
+    background-position:right center;
+    background-repeat: no-repeat;
+    background-color:#FFFFFF;
+    border:1px solid #999;
+}
+select[disabled], input[disabled], textarea[disabled] {
+    background-color: #dddddd;
+}
+select[readonly], input[readonly], textarea[readonly] {
+    background-color: #F5F5F5;
+}
+input, textarea {
+    font-size: 15px;
+    padding: 5px;
+    width: 94%;
+    border:1px solid #999;
+}
+
+.hasDatepicker, .calendar {
+    background:#fff url("../img/calendar.png") no-repeat scroll right center;
+    background-position: 97% 50%;
+}
+
+.discount {
+    color: red;
+    text-align: center;
+}
+
+.fee-table {
+    overflow:scroll;
+    box-shadow:0 0 15px #83578B inset;
+}
+.fee-table table {
+    min-width:700px !important;
+    width:700px !important;
+}
+
+.no-border {
+    border:none !important;
+}
+.form-section {
+    width:90%;
+    margin:10px auto;
+    padding:10px;
+    background:#F2F0F2;
+    text-align:left;
+    border-radius:5px;
+}
+.rel {
+    position:relative;
+}
+.hide {
+    display:none;
+}
+
+.btn {
+    border:none;
+    border-radius:3px;
+}
+.radius5 {
+    border-radius:5px;
+}
+
+.table {
+    display:table;
+}
+.table-row {
+    display:table-row;
+}
+.table-cell {
+    display:table-cell;
+}
+.small_text {
+    font-size:11px;
+}
+
+[class^='grid'],
+[class^='col-'],
+[class^='mobile-'],
+.grid:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;	
+}
+
+[class^='col-'] {
+	float: left;
+  	min-height: 1px;
+	padding-right: 10px; /* column-space */
+}
+
+[class^='col-'] [class^='col-']:last-child {
+	padding-right: 0;
+}
+
+.grid {
+	width: 100%;
+	max-width: 1140px;
+	min-width: 320px; /* when using padded grid on ipad in portrait mode, width should be viewport-width - padding = (768 - 20) = 748. actually, it should be even smaller to allow for padding of grid containing element */
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.grid:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.grid-pad {
+	padding-top: 10px;
+	padding-left: 10px; /* grid-space to left */
+	padding-right: 0; /* grid-space to right: (grid-space-left - column-space) e.g. 20px-20px=0 */
+}
+
+.push-right {
+	float: right;
+}
+
+/* Content Columns */
+
+.col-1-1 {
+	width: 100%;
+}
+.col-2-3, .col-8-12 {
+	width: 66.66%;
+}
+
+.col-1-2, .col-6-12 {
+	width: 50%;
+}
+
+.col-1-3, .col-4-12 {
+	width: 33.33%;
+}
+
+.col-1-4, .col-3-12 {
+	width: 25%;
+}
+
+.col-1-5 {
+	width: 20%;
+}
+.col-2-5 {
+	width: 40%;
+}
+.col-3-5 {
+	width: 60%;
+}
+.col-4-5 {
+	width: 80%;
+}
+
+.col-1-6, .col-2-12 {
+	width: 16.667%;
+}
+
+.col-1-7 {
+	width: 14.28%;
+}
+.col-2-7 {
+	width: 28.56%;
+}
+.col-3-7 {
+	width: 42.85%;
+}
+.col-4-7 {
+	width: 57.14%;
+}
+.col-5-7 {
+	width: 71.42%;
+}
+.col-6-7 {
+	width: 85.71%;
+}
+
+
+
+.col-1-8 {
+	width: 12.5%;
+}
+
+.col-1-9 {
+	width: 11.1%;
+}
+
+.col-1-10 {
+	width: 10%;
+}
+
+.col-1-11 {
+	width: 9.09%;
+}
+
+.col-1-12 {
+	width: 8.33%
+}
+
+/* Layout Columns */
+
+.col-11-12 {
+	width: 91.66%
+}
+
+.col-10-12 {
+	width: 83.333%;
+}
+
+.col-9-12, .col-3-4 {
+	width: 75%;
+}
+
+.col-5-12 {
+	width: 41.66%;
+}
+
+.col-7-12 {
+	width: 58.33%
+}
+
+/* Pushing blocks */
+
+.push-2-3, .push-8-12 {
+	margin-left: 66.66%;
+}
+
+.push-1-2, .push-6-12 {
+	margin-left: 50%;
+}
+
+.push-1-3, .push-4-12 {
+	margin-left: 33.33%;
+}
+
+.push-1-4, .push-3-12 {
+	margin-left: 25%;
+}
+
+.push-1-5 {
+	margin-left: 20%;
+}
+
+.push-1-6, .push-2-12 {
+	margin-left: 16.667%;
+}
+
+.push-1-7 {
+	margin-left: 14.28%;
+}
+
+.push-1-8 {
+	margin-left: 12.5%;
+}
+
+.push-1-9 {
+	margin-left: 11.1%;
+}
+
+.push-1-10 {
+	margin-left: 10%;
+}
+
+.push-1-11 {
+	margin-left: 9.09%;
+}
+
+.push-1-12 {
+	margin-left: 8.33%
+}
+.row {
+    overflow:hidden;
+}
+.clear {
+    clear:both;
+}

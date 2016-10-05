@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+
+        <meta name="viewport" id="viewport" content="width=800 width=1, maximum-scale=1, minimum-scale=1, initial-scale=1, user-scalable=yes, target-densitydpi=device-dpi">
+        <script type="text/javascript">
+            var viewPortWidth = 400;
+            function setViewport() {
+                var wW0 = window.screen.width;
+                var scale = wW0/viewPortWidth;
+                var vPort = "width="+viewPortWidth+", maximum-scale="+scale+", minimum-scale="+scale+", initial-scale="+scale+", user-scalable=yes, target-densitydpi=device-dpi";
+                document.getElementById("viewport").setAttribute("content", vPort);
+            }
+            setViewport();
+        </script>        
+        
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+        <link rel="stylesheet" type="text/css" href="css/base.css">
+        <link rel="stylesheet" type="text/css" href="css/login.css">
+        <link rel="stylesheet" type="text/css" href="css/dialog.css" />
+        <link rel="stylesheet" type="text/css" href="js/libs/jqueryui/css/base/minified/jquery-ui.min.css" />
+        
+        <title>MoniCare Nannies and Household Staffing, Inc.</title>
+        
+        <script type="text/javascript" src="cordova.js"></script>
+        
+        <script type="text/javascript" src="js/libs/jquery/jquery-3.0.0.min.js"></script>
+        <script type="text/javascript" src="js/libs/jquery/jquery-migrate-3.0.0.js"></script>
+        <script type="text/javascript" src="js/libs/jqueryui/jquery-ui.js"></script>
+
+        <script type="text/javascript" src="js/jsrender.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mask.min.js"></script>
+        <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="js/pluralize.js"></script>
+        
+        <script type="text/javascript" src="js/pages.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/scripts.js"></script>
+        
+    </head>
+    <body class="not-logged">
+        
+        <div id="page_header" data-role="header" data-position="fixed">
+
+            <nav id="top_navigation">
+                <a id="home" class="m_btn"><i class="icon-reorder"></i> MENU</a>
+                <ul>
+                    <!--li><a href="#about" class="nav_link"><i class="icon-book icon-2x"></i><span>About Us</span></a></li-->
+                    <!--li><a href="#exit" class="nav_link"><span>Exit</span></a></li-->
+                </ul>
+            </nav>
+
+            <div class="logo">
+                <img src="img/logo_small_118x100.png" height="50" alt="">
+            </div>
+
+            <nav id="login_navigation">
+                <a class="m_btn nav_link" id="login-btn" href="#login" data-dir="right"><i class="icon-user"></i> LOGIN</a>
+                
+                <a class="m_btn logged nav_link" id="logged_user-btn" href="#dashboard" data-dir="right"><i class="icon-user"></i> <span>ME</span></a>
+            </nav>
+                
+        </div>
+
+        <div id="page_footer" data-role="footer" data-position="fixed">
+
+            <nav id="footer_navigation">
+                <ul>
+                    <!--li><a class="nav_link" href="#dashboard">Dashboard</a></li-->
+                    <li><a class="nav_link active" href="#position">Position</a></li>
+                    <li><a class="nav_link" href="#client_info">Client Info</a></li>
+                    <li><a class="nav_link" href="#job_description">Job Description</a></li>
+                    <li class="client_questionnaire"><a class="nav_link" href="#client_questionnaire">Client Questionnaire</a></li>
+                    <li><a class="nav_link" href="#client_agreement">Client Agreement</a></li>
+                    <li><a class="nav_link" href="#payment">Payment Method</a></li>
+                </ul>
+            </nav>
+
+        </div>
+        
+        
+        <div id="loading">
+            <img src="img/loading.gif" width="64" alt="">
+            <br />
+            Loading... Please wait.
+        </div>
+        
+        <div class="dialog" data-dialog="true" data-role="page" id="dialogPage">
+          <div data-role="header" class="ui-header">
+            <h2 class="ui-title"></h2>
+            <a id="close-dialog"><i class="icon-remove icon-2x"></i></a>
+          </div>
+          <div data-role="main" class="ui-content">
+          </div>
+        </div>        
+        
+        
+        <div class="overlay"></div>
+        
+        
+        <div class="app" data-role="page" id="login">
+            
+            <div data-role="content">
+                
+                <div class="login_app">
+                    
+                    <h1 class="title">Login</h1>
+                    
+                    <div class="login-form">
+                    
+                        <p class="error-msg">Password is incorrect. </p>
+
+                        <div class="form">
+                            <form method="post" id="login-form">
+                                <div class="f"><input type="email" name="username" class="radius3" placeholder="E-mail"></div>
+                                <div class="f"><input type="password" name="password" class="radius3" placeholder="Password"></div>
+
+                                <div style="position: relative; margin: 5px 0px 2px 0px; padding-top: 3px; overflow: auto;">
+                                    <div style="float: left; width: 80px; height: 24px;"></div>
+                                    <div class="submit">
+                                        <button type="submit" class="big_btn">Submit »</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        
+                        <div class="login_bot_register">
+                            <p class="forgot"><a href="#forget" class="nav_link link_btn" data-dir="right">Forgot your password?</a></p>
+                            <p><a href="#registration" class="nav_link link_btn" data-dir="right">New Client: Register&gt;&gt;</a></p>
+                        </div>
+
+                        <div class="comodo"><img src="img/PositiveSSL_tl_trans.gif" alt=""></div>                
+                    
+                    </div>
+                
+                </div>
+        
+            </div>
+        
+        </div>
+        
+        
+        <div class="app" data-role="page" id="forget">
+            
+            <div data-role="content">
+                
+                <div class="login_app">
+                    
+                    <h1 class="title">Forgot your Password?</h1>
+                    
+                    <p>Enter the email address used to create your application.<br />We will send a link to reset your password. Check your email. </p>
+                    
+                    <p class="error-msg"></p>
+                    
+                    <p class="forget-success"></p>
+                    
+                    <div class="form">
+                        <form method="post" id="forget-form">
+                            <div class="f"><input type="email" name="email" placeholder="E-mail"></div>
+
+                            <div style="position: relative; margin: 5px 0px 2px 0px; padding-top: 3px; overflow: auto;">
+                                <div style="float: left; width: 80px; height: 24px;"></div>
+                                <div class="submit">
+                                    <button type="submit" class="big_btn" onclick="javascript: app.forget_form_submit();">Submit »</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    
+                    <div class="login_bot_register">
+                        <p class="forgot"><a href="#login" class="nav_link link_btn" data-dir="right">Go to Login Form</a></p>
+                        <p><a href="#registration" class="nav_link link_btn" data-dir="right">New Client: Register&gt;&gt;</a></p>
+                    </div>
+            
+                    <div class="comodo"><img src="img/PositiveSSL_tl_trans.gif" alt=""></div>                
+                
+                </div>
+        
+            </div>
+        
+        </div>        
+        
+        
+        <div class="app" data-role="page" id="page_content">
+        
+            <div data-role="content" class="content" id="page_content_html"> 
+        
+                
+
+            </div>  
+            
+        </div>
+        
+        
+    </body>
+</html>
